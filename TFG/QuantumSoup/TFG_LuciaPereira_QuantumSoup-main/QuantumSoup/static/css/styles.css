@@ -1,0 +1,159 @@
+@font-face {
+    font-family: 'Kaisei Haruno Umi';
+    src: url('../fonts/kaisei-harunoumi/KaiseiHarunoUmi-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kaisei Haruno Umi';
+    src: url('../fonts/kaisei-harunoumi/KaiseiHarunoUmi-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kaisei Haruno Umi';
+    src: url('../fonts/kaisei-harunoumi/KaiseiHarunoUmi-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Irish Grover';
+    src: url('../fonts/irish-grover/IrishGrover-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Condensed';
+    src: url('../fonts/sofia-sans-condensed/SofiaSansCondensed-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Condensed';
+    src: url('../fonts/sofia-sans-condensed/SofiaSansCondensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Condensed';
+    src: url('../fonts/sofia-sans-condensed/SofiaSansCondensed-Regular.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* 3 FONTS:
+    - Kaisei Haruno Umi
+    - Irish Grover
+    - Sofia Sans Condensed
+*/
+
+/* -------------  HEADER  --------------------- */
+header {
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo-container {
+    padding-left: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: #F3CCB4;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo-container h1 {
+    color: #000000;
+    text-align: left;
+    font-family: "Jersey25-Regular", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* -------------  NavBar  --------------------- */
+.custom-navbar {
+    background-color: #CC7B74;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 0 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #ac4147;
+    color: white;
+}
+
+.navbar a.active {
+    background-color: #ac4147;
+}
+
+
+/* ===========================
+   Tablet (≤ 1024px)
+=========================== */
+@media (max-width: 768px) {
+    .logo-container h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .custom-navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        padding: 12px 20px;
+        margin: 5px 0;
+    }
+}
+
+/* ===========================
+   Moviles pequeños (≤ 480px)
+=========================== */
+@media (max-width: 480px) {
+    
+    /* Logo más pequeño y centrado */
+    .logo-container h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    /* Asegurar que el nav se vea bien en pantallas pequeñas */
+    .custom-navbar {
+        padding: 10px;
+    }
+
+    nav a {
+        font-size: 14px;
+        padding: 12px 25px;
+        width: 100%;
+        text-align: center;
+    }
+}

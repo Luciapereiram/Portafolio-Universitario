@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/simulator.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.0/codemirror.min.css">
+
+{% endblock %}
+
+{% block content %}
+<div class="simulator-container">
+    <div class="simulator-grid">
+        <div class="left-panel">
+            <h1> Simulador Cuántico </h1>
+            <h2> ¡Introduce tu receta cuántica y veamos a que sabe! </h2>
+            <!-- <div class="examples"></div> -->
+        </div>
+        <div class="right-panel">
+            <div class="code-space">
+                <textarea id="quantum-code"></textarea>
+                <div class="button-container">
+                    <button id="execute-btn"> Ejecutar </button>
+                    <button id="view-circuit-btn"> Ver Circuito </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="circuit-modal" class="modal">
+        <div class="modal-content">
+            <span id="close-btn" class="close-btn">&times;</span>
+            <h3>Visualización del Circuito Cuántico</h3>
+            <img id="circuit-image" src="" alt="Circuito Cuántico">
+        </div>
+    </div>
+
+    <div id="result-section">
+        <div class="results">
+            <div class="result-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p> Resultados </p>
+                    </div>
+                    <div class="card-back">
+                        <div id="result-table-container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <p> Histograma </p>
+                    </div>
+                    <div class="card-back">
+                        <div class="histogram">
+                            <canvas id="graphic-result"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="error-modal" class="error-modal" style="display: none;">
+        <div class="error-modal-content">
+            <span id="close-error-btn" class="close-btn">&times;</span>
+            <h3>Ocurrió un error</h3>
+            <p id="error-message"></p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block js_files %}
+<!-- CodeMirror JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- JS específico de esta página -->
+<script src="{% static 'js/simulator.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> QuantumSoup </title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- Bloque para CSS adicional específico de cada página -->
+    {% block extra_css %}
+    {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <h1>QuantumSoup</h1>
+        </div>
+    
+        <nav class="navbar navbar-expand-lg custom-navbar">
+            <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="{% url 'simulator' %}" class="{% if request.path == '/simulator/' %}active{% endif %}">Simulador</a>
+            <a href="{% url 'info' %}" class="{% if request.path == '/info/' %}active{% endif %}">Aprendizaje</a>
+        </nav>
+    </header>
+    
+    <!-- El contenido de cada página se insertará aquí -->
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    {% block js_files %}
+    {% endblock %}
+
+    <script>
+        window.addEventListener("load", () => {
+            document.body.classList.remove("hidden");
+        });
+    </script>
+</body>
+
+</html>

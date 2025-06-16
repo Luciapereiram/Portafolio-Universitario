@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfico de simulación</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Resultados de simulación</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        fetch('resultado.json')
+            .then(response => response.json())
+            .then(data => {
+                const result = data.result;  
+    
+                const labels = Object.keys(result);
+                const values = Object.values(result);
+    
+                const ctx = document.getElementById('myChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',  
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Conteos de Simulación',
+                            data: values,
+                            backgroundColor: '#9e0c39',
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos:', error);
+            });
+    </script>
+    
+</body>
+</html>

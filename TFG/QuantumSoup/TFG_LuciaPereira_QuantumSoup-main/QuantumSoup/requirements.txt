@@ -1,0 +1,6 @@
+Django>=5.1.1
+djangorestframework
+qiskit
+requests
+matplotlib
+pylatexenc

@@ -1,0 +1,617 @@
+.simulator-container {
+    background-image: url("../img/backgroundLearning.svg");
+    width: 100%;
+    height: 100vh;
+
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+.simulator-grid {
+    display: flex;
+    gap: 2rem;
+    padding-top: 15%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    scroll-snap-align: start;
+}
+
+.left-panel,
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.simulator-container h1 {
+    font-family: "Irish Grover", sans-serif;
+    font-size: 100px;
+    max-width: 100px;
+    margin-left: 10%;
+}
+
+.simulator-container h2 {
+    font-family: 'Kaisei Haruno Umi', sans-serif;
+    font-size: 30px;
+    max-width: 500px;
+    margin-top: 40px;
+    line-height: 1.5;
+    text-align: center;
+    margin-left: 10%;
+}
+
+.code-space {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 30%;
+    max-width: 800px;
+}
+
+.CodeMirror {
+    /* Extras para parecerse a un textarea */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.button-container {
+    display: flex;
+    gap: 2em;
+    margin-left: 10rem;
+}
+
+#execute-btn {
+
+    width: 230px;
+    height: 60px;
+
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.8em;
+    font-weight: 550;
+    color: #F3CCB4;
+    background: #601848;
+    border: 3px solid #300030;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#execute-btn:hover {
+    font-size: 2em;
+    background: #300030;
+    color: #F3CCB4;
+}
+
+#view-circuit-btn {
+    width: 230px;
+    height: 60px;
+
+    font-family: 'Sofia Sans Condensed', sans-serif;
+    font-size: 1.8em;
+    font-weight: 550;
+    color: #F3CCB4;
+    background: #601848;
+    border: 3px solid #300030;
+    border-radius: 45px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+#view-circuit-btn:hover {
+    font-size: 2em;
+    background: #300030;
+    color: #F3CCB4;
+}
+
+#result-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.results {
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 5%;
+}
+
+.result-card {
+    width: 600px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.999s;
+}
+
+.result-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    align-items: center;
+}
+
+.card-front {
+    background-color: #F3CCB4;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    transform: rotateY(0deg);
+}
+
+.card-front p {
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+.card-front #result {
+    font-family: "Kaisei Haruno Umi", sans-serif;
+
+}
+
+.card-back {
+    background-color: #d48080;
+    display: flex;
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+
+.histogram {
+    width: 550px;
+    height: 280px;
+    margin-left: 1rem;
+}
+
+#graphic-result {
+    width: 100%;
+    height: 100%;
+}
+
+#result-table-container {
+    width: 100%;
+    margin-left: 5%;
+}
+
+.scroll-table {
+    max-height: 220px;
+    overflow-y: auto;
+    width: 95%;
+}
+
+.scroll-table::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-table::-webkit-scrollbar-thumb {
+    background-color: #ba5c5c;
+    border-radius: 3px;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 1.3rem;
+    margin: 1rem auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.result-table thead {
+    background-color: #9e0c39;
+    color: white;
+}
+
+.result-table th,
+.result-table td {
+    padding: 12px 16px;
+    text-align: center;
+    width: 60%;
+}
+
+.result-table tbody tr:nth-child(even) {
+    background-color: #f7e6e6;
+}
+
+.result-table tbody tr:nth-child(odd) {
+    background-color: #fdf4f4;
+}
+
+.result-table tbody tr:hover {
+    background-color: #ffe2e2;
+    transition: background-color 0.3s ease;
+}
+
+
+/* El fondo oscuro del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+}
+
+.close-btn {
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+    position: absolute;
+    top: -1px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: darkred;
+    text-decoration: none;
+}
+
+#circuit-image {
+    width: 100%;
+    height: auto;
+}
+
+#error-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-modal-content {
+    background-color: #ffe5e5;
+    border: 2px solid #ff0000;
+    border-radius: 10px;
+    padding: 30px;
+    width: 400px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+#error-modal h3 {
+    font-weight: bold;
+    color: #b00000;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+#error-message {
+    color: #5a0000;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+
+/* ===========================
+   Tablet (≤ 1024px)
+=========================== */
+@media screen and (max-width: 1024px) {
+    .simulator-grid {
+        flex-direction: column;
+        padding-top: 25%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .simulator-container h1 {
+        font-size: 70px;
+        max-width: none;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .simulator-container h2 {
+        font-size: 24px;
+        margin-left: 0;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .code-space {
+        margin-top: 5rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .button-container {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .results {
+        gap: 4rem;
+    }
+
+    .result-card {
+        width: 90%;
+        height: 280px;
+    }
+
+    .histogram {
+        width: 100%;
+        height: 250px;
+        padding-top: 2rem;
+        padding-right: 2rem;
+    }
+
+    #result-table-container {
+        padding: 2rem;
+    }
+
+    .result-table {
+        font-size: 1.1rem;
+    }
+
+    .result-card {
+        transform: none !important;
+        perspective: none !important;
+    }
+
+    .card-inner {
+        transform: none !important;
+    }
+
+    .card-front,
+    .card-back {
+        position: static !important;
+        backface-visibility: visible !important;
+        display: block !important;
+        transform: none !important;
+    }
+
+    /* Opcional: mostrar solo el frente o el reverso */
+    /* Por ejemplo, si quieres mostrar siempre el reverso en móviles: */
+    .card-front {
+        display: none !important;
+    }
+
+    .modal {
+        padding-top: 20%;
+    }
+}
+
+
+/* ===========================
+   Movil grande (≤ 768px)
+=========================== */
+@media screen and (max-width: 768px) {
+    .simulator-grid {
+        flex-direction: column;
+        padding-top: 20%;
+    }
+
+    .simulator-container h1 {
+        font-size: 50px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .simulator-container h2 {
+        font-size: 20px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .code-space {
+        margin-top: 3rem;
+        gap: 1.5em;
+        padding: 0 1rem;
+    }
+
+    .CodeMirror {
+        font-size: 14px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 0;
+    }
+
+    #execute-btn,
+    #view-circuit-btn {
+        width: 90%;
+        height: 50px;
+        font-size: 1.4em;
+    }
+
+    .results {
+        gap: 2rem;
+    }
+
+    .result-card {
+        width: 95%;
+        height: 260px;
+    }
+
+    .card-front p {
+        font-size: 36px;
+    }
+
+    .histogram {
+        width: 95%;
+        height: 230px;
+    }
+
+    .result-table {
+        font-size: 1rem;
+    }
+}
+
+
+/* ===========================
+   Moviles pequeños (≤ 480px)
+=========================== */
+@media screen and (max-width: 480px) {
+    .simulator-container {
+        height: auto;
+        background-size: cover;
+    }
+
+    .simulator-grid {
+        flex-direction: column;
+        padding-top: 80%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .simulator-container h1 {
+        font-size: 38px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .simulator-container h2 {
+        font-size: 18px;
+        margin: 1rem auto;
+        text-align: center;
+    }
+
+    .code-space {
+        margin-top: 2rem;
+        gap: 1rem;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .CodeMirror {
+        font-size: 13px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-left: 0;
+    }
+
+    #execute-btn,
+    #view-circuit-btn {
+        width: 100%;
+        height: 45px;
+        font-size: 1.2em;
+    }
+
+    .results {
+        flex-direction: column;
+        gap: 2rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #result-table-container {
+        padding: 2rem;
+    }
+
+    .result-table {
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .result-card {
+        transform: none !important;
+        perspective: none !important;
+    }
+
+    .card-inner {
+        transform: none !important;
+    }
+
+    .card-front,
+    .card-back {
+        position: static !important;
+        backface-visibility: visible !important;
+        display: block !important;
+        transform: none !important;
+    }
+
+    /* Opcional: mostrar solo el frente o el reverso */
+    /* Por ejemplo, si quieres mostrar siempre el reverso en móviles: */
+    .card-front {
+        display: none !important;
+    }
+
+    .card-front p {
+        font-size: 28px;
+    }
+
+    .histogram {
+        width: 100%;
+        height: 200px;
+    }
+
+    .modal {
+        padding-top: 60%;
+    }
+
+    .modal-content h3 {
+        font-size: 15px;
+    }
+
+    .close-btn {
+        font-size: 36px;
+        top: 5px;
+        right: 10px;
+    }
+
+    .error-modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #error-modal h3 {
+        font-size: 18px;
+    }
+
+    #error-message {
+        font-size: 14px;
+    }
+}

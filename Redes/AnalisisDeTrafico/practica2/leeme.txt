@@ -1,0 +1,42 @@
+Autores: 
+	Lucia Pereira Menchero
+	Iker Perez Villa
+	
+
+Comentarios:
+
+- Hemos agregado en practica2.py la funcionalidad del sondeo ARP. Para ello, al ejecutar el programa te da la opcion de pulsar la letra "g" y a continuacion debe introducir la direccion IP que desea comprobar si es unica en la red. 
+
+- Al hacer las pruebas correspondientes, nos dimos cuenta de que habia algunas veces que la cache daba problemas si justo coincidia el acceder al contenido de la cache cuando sus datos expiraban (tanto al imprimirla como al recoger una MAC solicitada). Igualmente no afecta al funcionamiento de las peticiones ARP.
+
+- En "Captura_1.png" vemos los paquetes enviados, que son los de comprobación de la propia IP de cada nodo al inicializarlo (3 paquetes "gratuitos" por nodo), el paquete enviado desde el nodo h2 al preguntar por el 10.0.0.1 y los de respuesta del nodo h1, que tiene esa IP.
+
+- En "Captura_1.png" también se puede observar que al pedir un IP dos veces seguidas, como este se añade la primera vez en caché, la segunda vez no envía ningún paquete.
+
+- En "Captura_2.png" se comprueban los paquetes enviados cuando hay un IP duplicado, así como que el programa finaliza.
+
+- En "Captura_3.png" puede verse que al realizar un sondeo vuelve a comprobar si el propio IP está duplicado, viendose reflejado en los paquetes enviados.
+
+Criterios de evaluacion (Realizado, Parcialmente-Realizado, No-Realizado)
+
+- Normativa de entrega cumplida en su totalidad: Realizado, se ha leído varias veces el enunciado comprobando la normativa.
+
+- Fichero leeme.txt bien explicado: Realizado, se ha detallado y explicado lo máximo posible.
+
+- Recibir tramas Ethernet, realizar comprobaciones y llamar correctamente a la función de callback de nivel superior: Realizado, se ha comprobado con Wireshark, adjuntando capturas de ello.
+
+- Enviar tramas Ethernet  correctamente: Realizado, se ha comprobado con Wireshark, adjuntando capturas de su comprobación.
+
+- Enviar correctamente peticiones ARP: Realizado, con Wireshark se comprueba que las peticiones se envían corrrectamente, adjuntando captura de ello.
+
+- Procesar correctamente peticiones ARP recibidas: Realizado, se comprueba que una vez procesada la petición envíe una respuesta, adermás de ver en Wireshark que esta respuesta es enviada en un paquete.
+
+- Enviar correctamente respuestas ARP: Realizado, comprobado con Wireshark el envío de paquetes, adjuntando captura.
+
+- Procesar correctamente respuestas ARP: Realizado, cuando se recibe una respuesta se comprueba que sea "para mí" y en caso afirmativo guarda la MAC asociada a la IP solicitada.
+
+- Manejo correcto de la caché ARP: Realizado, se protege con un Lock, guarda las MACs asociadas a cierto IP y se elimina cada cierto tiempo.
+
+- Uso correcto de Locks: Realizado, antes de acceder a una variable protegida con un Lock se usa el correspondiente.
+
+- Realiza correctamente el sondeo ARP: Realizado, se vuelven a enviar 3 paquetes buscando nuestro propio IP a broadcast, pudiendose ver en una captura adjunta.

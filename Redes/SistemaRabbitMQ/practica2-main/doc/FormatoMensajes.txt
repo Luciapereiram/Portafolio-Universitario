@@ -1,0 +1,25 @@
+-- Formato de los mensajes entre colas --
+
+Mensaje de registro -> REGISTER user password
+Mensaje de respuesta -> REGISTERED user_id user password / REGISTERED Failed
+
+Mensaje inicio de sesion -> LOGIN user password
+Mensaje de respuesta -> LOGGED-IN / LOGIN Failed
+
+Mensaje realizar pedido -> ORDER user_id product_ids
+Mensaje de respuesta -> ORDERED / ORDER Failed
+
+Mensaje buscar producto -> FIND product_id
+Mensaje de respuesta -> FOUND order_id product_id amount/ FIND Failed
+
+Mensaje listar pedidos -> LIST user_id
+Mensaje de respuesta -> LISTED / LIST Failed
+
+Mensaje listar pedidos -> CANCEL user_id order_id
+Mensaje de respuesta -> CANCELLED / CANCEL Failed
+
+Mensaje repartir un pedido -> DISTRIBUTE order_id
+Mensaje de respuesta -> ON-DELIVERY order_id / DELIVERED order_id / FAILED-DELIVERY
+
+Mensaje listar productos -> PRODUCTS user_id
+Mensaje de respuesta -> PRODUCTS products_list / PRODUCTS Failed

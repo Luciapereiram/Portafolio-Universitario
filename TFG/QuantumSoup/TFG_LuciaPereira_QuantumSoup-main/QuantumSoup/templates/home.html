@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="home-container container-fluid">
+    <!-- Primera página: Principal -->
+    <div class="first-screen d-flex align-items-center">
+        <div class="row w-100 align-items-center">
+            <div class="col-12 col-md-6">
+                <p> Donde la teoría y la práctica se fusionan en una mezcla perfecta. </p>
+            </div>
+
+            <div class="col-12 col-md-6 d-flex justify-content-center justify-content-md-end">
+                <div class="name-container">
+                    <h1 class="q">Q</h1>
+                    <div class="logo-wrapper">
+                        <img src="{% static 'img/logo.png' %}" alt="Logo QuantumSoup" class="home-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Segunda página: Qué es Quantum Soup -->
+
+    <!-- Tercera página: Cards -->
+    <section class="card-section">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 d-flex justify-content-center mb-4">
+                    <a href="{% url 'simulator' %}" class="text-decoration-none w-100 d-flex justify-content-center">
+                        <div class="custom-card">
+                            <strong>Quantum Simulator</strong>
+                            <div class="card__body">
+                                Prueba a simular circuitos y ver la evolución de los qubits
+                            </div>
+                            <span>¡A SIMULAR!</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 d-flex justify-content-center mb-4">
+                    <a href="https://docs.quantum.ibm.com/guides" target="_blank" rel="noopener noreferrer"
+                        class="text-decoration-none w-100 d-flex justify-content-center">
+
+                        <div class="custom-card-button">
+                            <strong>Aprende Qiskit</strong>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}

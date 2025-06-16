@@ -1,0 +1,458 @@
+.learning-container {
+    background-image: url("../img/backgroundLearning.svg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-bottom: 5%;
+
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.first-screen {
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+.learning-title {
+    color: #000000;
+    text-align: center;
+    font-family: 'Irish Grover', cursive;
+    font-size: 250px;
+    position: relative;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 35%;
+}
+
+.learning-subtitle {
+    color: #000000;
+    text-align: center;
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 100px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8%;
+}
+
+.rectangles-container {
+    scroll-snap-align: start;
+    padding-top: 15%;
+}
+
+.rectangle {
+    cursor: pointer;
+    /* Cambiar el cursor a la mano cuando se pase sobre el rectángulo */
+    margin-top: 30px;
+    background: #ffe29a;
+    height: 212px;
+    width: 100%;
+
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rectangle:hover {
+    background: #411f2d;
+    transform: scale(1.1, 1.1);
+    box-shadow: 10px 10px 4px 0px rgba(248, 136, 99, 0.25);
+}
+
+.rectangle:hover h1 {
+    letter-spacing: 8px;
+    color: #f88863;
+}
+
+.rectangle h1 {
+    color: #000000;
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 70px;
+    margin-top: 65px;
+    margin-left: 55px;
+}
+
+.concept-container {
+    color: #411f2d;
+    font-family: "Sofia Sans Condensed", sans-serif;
+    font-size: 25px;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 85%;
+    margin-top: -18vh;
+
+    max-width: 120px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    background-color: white;
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    height: 75%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #411f2d;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+#modalTitle {
+    color: #f88863;
+    font-size: 70px;
+    font-family: "Sofia Sans Condensed", sans-serif;
+    margin-right: 2rem;
+}
+
+.modal-content {
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.arrow-back {
+    margin-left: 1rem;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+}
+
+.arrow-back:hover {
+    filter: drop-shadow(2px 2px 4px rgba(255, 215, 163, 0.3));
+    transform: scale(1.05);
+}
+
+.modal-section {
+    margin-bottom: 20px;
+}
+
+.modal-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.modal-articulo h4 {
+    font-size: 1.2rem;
+    color: #e74c3c;
+}
+
+.modal-articulo p {
+    font-size: 1rem;
+    color: #34495e;
+}
+
+#modalText h3 {
+    font-family: "Kaisei Haruno Umi", sans-serif;
+    font-size: 25px;
+    font-weight: 1000;
+}
+
+#modalText p {
+    font-family: "Jersey25-Regular", sans-serif;
+    font-size: 18px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.tab-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+
+    transition: all 0.2s ease;
+
+    position: relative;       
+    z-index: 1;               
+    margin-right: 4px;
+    border-bottom: none;      
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-button:hover {
+    color: #9e0c39;
+}
+
+.tab-button.active {
+    color: #9e0c39;
+    border-color: #9e0c39;
+    z-index: 10;
+    box-shadow: 0 -2px 5px rgba(24, 23, 23, 0.1);
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+}
+
+.resource-card {
+    padding: 1rem;
+    border-left: 3px solid #ccc;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.resource-card h4 {
+    margin-top: 0;
+}
+
+.resource-card a {
+    color: #0055ff;
+    text-decoration: underline;
+}
+
+
+/* ===========================
+   Tablet (≤ 1024px)
+=========================== */
+@media screen and (max-width: 1024px) {
+    .learning-container {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .first-screen {
+        padding-top: 30%;
+    }
+
+    .learning-title {
+        font-size: 150px;
+        padding-top: 20%;
+        height: auto;
+    }
+
+    .learning-subtitle {
+        font-size: 60px;
+        padding-top: 5%;
+    }
+    
+    .rectangles-container {
+        padding-top: 1rem;
+        padding-left: 3rem;
+        padding-right: 2rem;
+    }
+    .rectangle h1 {
+        font-size: 50px;
+        margin-top: 40px;
+        margin-left: 35px;
+    }
+
+    .concept-container {
+        font-size: 20px;
+        margin-left: 75%;
+        margin-top: -15vh;
+    }
+
+    .modal {
+        padding-top: 20%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    #modalTitle {
+        font-size: 50px;
+    }
+
+    #modalText h3 {
+        font-size: 22px;
+    }
+
+    #modalText p {
+        font-size: 16px;
+    }
+}
+
+
+/* ===========================
+   Movil grande (≤ 768px)
+=========================== */
+@media screen and (max-width: 768px) {
+    .learning-container {
+        padding-top: 25%;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .learning-title {
+        font-size: 100px;
+        padding-top: 25%;
+    }
+
+    .learning-subtitle {
+        font-size: 45px;
+        padding-top: 5%;
+    }
+
+    .rectangle h1 {
+        font-size: 40px;
+        margin-top: 30px;
+        margin-left: 25px;
+    }
+
+    .concept-container {
+        font-size: 18px;
+        margin-left: 65%;
+        margin-top: -12vh;
+    }
+
+    .modal-box {
+        width: 95%;
+        height: 85%;
+        margin-left: 2.5%;
+        margin-top: 20%;
+    }
+
+    #modalTitle {
+        font-size: 40px;
+    }
+
+    #modalText h3 {
+        font-size: 20px;
+    }
+
+    #modalText p {
+        font-size: 15px;
+    }
+
+    .tab-button {
+        font-size: 0.9rem;
+    }
+
+    .resource-card {
+        padding: 0.8rem;
+    }
+}
+
+
+/* ===========================
+   Moviles pequeños (≤ 480px)
+=========================== */
+@media screen and (max-width: 480px) {
+    .learning-container {
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+
+    .first-screen {
+        padding-top: 90%;
+    }
+
+    .learning-title {
+        font-size: 60px;
+        padding-top: 30%;
+        height: auto;
+    }
+
+    .learning-subtitle {
+        font-size: 30px;
+        padding-top: 4%;
+    }
+
+    .rectangles-container {
+        padding-top: 3rem;
+        padding-left: 3rem;
+        padding-right: 2rem;
+    }
+    
+    .rectangle {
+        height: 150px;
+    }
+
+    .rectangle h1 {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-left: 20px;
+    }
+
+    .concept-container {
+        font-size: 16px;
+        margin-left: 60%;
+        margin-top: -10vh;
+    }
+
+    .modal {
+        padding-top: 50%;
+    }
+    .modal-box {
+        padding: 1rem;
+    }
+
+    #modalTitle {
+        font-size: 30px;
+    }
+
+    #modalText h3 {
+        font-size: 18px;
+    }
+
+    #modalText p {
+        font-size: 14px;
+    }
+
+    .arrow-back {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tab-button {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .resource-card {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+

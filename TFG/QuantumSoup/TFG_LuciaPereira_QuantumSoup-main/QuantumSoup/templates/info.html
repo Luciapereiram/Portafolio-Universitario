@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/info.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="info-container">
+    <div class="learning-container">
+        <div class="first-screen">
+            <div class="learning-title"> APRENDE </div>
+            <div class="learning-subtitle"> Computación Cuántica </div>
+        </div>
+
+        <div class="rectangles-container">
+            <div class="rectangle row justify-content-center" data-modal-content="historyContent">
+                <h1> Historia </h1>
+                <div class="concept-container">
+                    <p> Origen. </p>
+                    <p> Evolución. </p>
+                    <p> Revolución. </p>
+                </div>
+            </div>
+
+            <div class="rectangle row justify-content-center" data-modal-content="conceptsContent">
+                <h1> Conceptos </h1>
+                <div class="concept-container">
+                    <p> Qbits y los principios básicos. </p>
+                </div>
+            </div>
+
+            <div class="rectangle row justify-content-center" data-modal-content="resourcesContent">
+                <h1> Recursos </h1>
+                <div class="concept-container">
+                    <p> Libros. </p>
+                    <p> Vídeos. </p>
+                    <p> Webs. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="infoModal" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-header">
+            <img id="closeModal" class="arrow-back" src="/static/img/arrow-back.png" alt="Atrás" />
+            <h2 id="modalTitle"></h2>
+        </div>
+        <div class="modal-content">
+            <div id="modalText">
+                <!-- Aquí se rellena dinámicamente -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_files %}
+<!-- JS específico de esta página -->
+<script src="{% static 'js/info.js' %}"></script>
+{% endblock %}
