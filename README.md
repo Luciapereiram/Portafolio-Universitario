@@ -1,4 +1,4 @@
-# Portafolio-Universitario
+# Portfolio-Universitario
 Este repositorio agrupa varios de mis proyectos más representativos durante la carrera, organizados por asignatura.
 
 La documentación detallada de cada proyecto está disponible en la [Wiki](../../wiki).
